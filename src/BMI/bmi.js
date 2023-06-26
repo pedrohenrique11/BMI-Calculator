@@ -2,21 +2,24 @@
 const weightInput = document.querySelector('#inputWeight')
 const heightInput = document.querySelector('#inputHeight')
 
-const resultContainer = document.querySelector('#resultContainer')
-const calcBmiButton = document.querySelector('#calcButton')
+const form = document.querySelector('form')
 
-// calculo
-function calculateBMI() {
+const resultContainer = document.querySelector('#resultContainer')
+
+form.onsubmit = e => {
+    e.preventDefault();
+
     let weight = weightInput.value;
     let height = heightInput.value;
-    
-    const result = weight / height **2;
-    const resultToFloat = Number(result.toFixed(2))
-    
-    resultContainer.innerHTML = Number.parseInt(resultToFloat);
-};
 
-calcBmiButton.addEventListener('click', calculateBMI)
+    const result = calculateBMI(weight, height)
+
+    resultContainer.innerHTML = Number(result);
+}
+
+function calculateBMI(weight, height) {
+    return (weight / (height/ 100)**2).toFixed(2);
+};
 
 
 module.exports = calculateBMI;
