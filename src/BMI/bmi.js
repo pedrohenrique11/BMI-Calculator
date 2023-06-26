@@ -1,6 +1,7 @@
 // View
 const weightInput = document.querySelector('#inputWeight')
 const heightInput = document.querySelector('#inputHeight')
+const errorAlert = document.querySelector('#errorAlert')
 
 const form = document.querySelector('form')
 const sectionResult = {
@@ -14,20 +15,36 @@ const sectionResult = {
         sectionResult.section.classList.add('hide')
     }
 }
+const showError = {
+    alert: document.querySelector('#errorAlert'),
+    open() {
+        errorAlert.classList.remove('hide')
+    },
+    close() {
+        errorAlert.classList.add('hide')
+    },
+}
 
 form.onsubmit = e => {
     e.preventDefault();
 
-    let weight = weightInput.value;
-    let height = heightInput.value;
+    const weight = weightInput.value;
+    const height = heightInput.value;
 
     const result = calculateBMI(weight, height)
     const description = setDescription(result)
+
+    if (weight === '' || height === '') {
+        return showError.open()
+    }
 
     sectionResult.result.innerHTML = `Your BMI is ${result}`;
     sectionResult.description.innerHTML = description;
     sectionResult.open()
 }
+
+weightInput.oninput = () => showError.close();
+heightInput.oninput = () => showError.close();
 
 function calculateBMI(weight, height) {
     return (weight / (height/ 100)**2).toFixed(2);
