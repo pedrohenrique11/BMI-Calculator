@@ -1,7 +1,7 @@
 // View
 const weightInput = document.querySelector('#inputWeight')
 const heightInput = document.querySelector('#inputHeight')
-const errorAlert = document.querySelector('#errorAlert')
+const newTryButton = document.querySelector('#tryButton')
 
 const form = document.querySelector('form')
 const sectionResult = {
@@ -24,6 +24,7 @@ const showError = {
         errorAlert.classList.add('hide')
     },
 }
+newTryButton.onclick = () => sectionResult.close();
 
 form.onsubmit = e => {
     e.preventDefault();
