@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/src/styles/styles.css">
+    <title>MBI Calculator</title>
+</head>
+<div id="errorAlert" class="hide">
+    <h3>Type your Weight and Height!</h3>
+</div>
+<body>
+<main>
+    <h1>BMI calculator</h1>
+    <p>BMI is a measurement of a person's leanness or corpulence based on their height and weight, and is intended to quantify tissue mass</p>
+    <form action="">
+        <div class="inputs">
+            <label for="inputWeight"> Your Weight(kg):</label>
+            <input id="inputWeight" type="number" placeholder="76">
+            <label for="inputHeight">Your Height(cm):</label>
+            <input id="inputHeight" type="number" placeholder="167">
+        </div>
+        <button id="calcButton" type="submit">Show my BMI!</button>
+    </form>
+
+</main>
+<div class="modal_result hide" id="resultModal">
+    <h2 id="result"></h2>
+    <span id="description"></span>
+    <button id="tryButton">Try again?</button>
+</div>
+<footer></footer>
+<script src="/src/BMI/bmi.js"></script>
+</body>
+</html>
